@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import '../../../App.css';
 import { SetStateAction, useState } from "react";
-import {addTodo, deleteTodo,editTodo} from './todosSlice';
+import {addTodo, deleteTodo} from './todosSlice';
 
 export const TodoList = () => {
-    const todos = useSelector((state)=> state.todos)
+    const todos = useSelector((state :any)=> state.todos)
     const [isEditing,setIsEditing] = useState(false);
     const [newTodo,setNewTodo] = useState({});
     const dispatch = useDispatch();
@@ -13,7 +13,6 @@ export const TodoList = () => {
      setTask(event.target.value);
      setNewTodo({...newTodo,task:event.target.value})
    }
-   console.log('newTodo-',todos)
     return(
         <div>
             <h1>Todo List</h1>
@@ -25,7 +24,7 @@ export const TodoList = () => {
                 {!isEditing && <button onClick={()=> dispatch(addTodo(task))}>Add Todo</button>}
                 {isEditing && 
                    <>
-                      <button onClick={()=>{ dispatch(editTodo(newTodo)),setIsEditing(false),setTask('')}}>Update</button>
+                      <button>Update</button>
                       <button onClick={()=> setIsEditing(false)}>Cancel</button>
                    </>
                 }

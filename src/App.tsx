@@ -5,7 +5,7 @@ import { decrement, increment,incrementByAmount } from './app/features/counter/c
 
 function App() {
   
-  const count = useSelector((state) => state.counter.value)
+  const count = useSelector((state:any) => state.counter.value)
   const dispatch = useDispatch();
   return (
     <>
